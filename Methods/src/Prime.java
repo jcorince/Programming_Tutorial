@@ -35,9 +35,11 @@ public class Prime {
 		
 		isPrime(number);
 		
+		scan.close();
+		
 		//todo: write a method which tells you if a given number is a prime or not
 		
-	}
+	}// end main method
 	
 	
 	
