@@ -38,7 +38,7 @@ public class Circle {
 			while(!scan.hasNextInt()) 
 			{
 			    scan.next();
-			    System.out.println("Please enter an integer ");
+			    System.out.println("Please enter an integer as required.");
 			}
 			
 			choice=scan.nextInt();
