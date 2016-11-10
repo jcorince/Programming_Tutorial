@@ -31,6 +31,13 @@ public class Prime {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Please enter a number");
+		
+		while(!scan.hasNextInt()) 
+		{
+		    scan.next();
+		    System.out.println("Please make sure the entered number is an integer greater than zero.");
+		}
+		
 		int number=scan.nextInt();
 		
 		isPrime(number);
