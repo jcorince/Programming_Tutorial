@@ -21,13 +21,23 @@ public class Fibonacci {
 		System.out.println("Please enter a number.");
 		int number;
 		
-		while(!scan.hasNextInt())
+		do
 		{
-			scan.next();
-			System.out.println("Please enter a number greater than zero.");
-		}//end while
+			while(!scan.hasNextInt())
+			{
+				scan.next();
+				System.out.println("Please enter a number greater than zero.");
+			}//end while
+			
+			number = scan.nextInt();
+			
+			if(number<0)
+			{
+				System.out.println("Please enter a value greater than 0");
+			}//end if
+		}while(number<0);//end do while
 		
-		number = scan.nextInt();
+		
 		
 		System.out.println("The fibonacci number of "+number+" is "+fibonacci(number)+".");
 		
