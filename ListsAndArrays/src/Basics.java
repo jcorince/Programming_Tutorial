@@ -9,9 +9,6 @@ public class Basics {
 	
 	public static int[] dropLastElement(int[] a, int[] n)
 	{
-		//int[]temp = new int[n];
-			
-		
 		for (int i=0; i<(arrayLength(a)-1); i++)
 		{
 			n[i]= a[i];
@@ -36,15 +33,15 @@ public class Basics {
 		{
 			if (a[j]== e)
 			{
-				p = 2;
+				p = 1;
 				//u = j;
 				System.out.println("The searched element "+e+" has been found in the array at the "+j+"th position." );
-			}else {
-				p=0;
+			}else if (p!=1){
+				p=2;
 				
 			}
 		}//end for
-		if (p==0)
+		if (p==2)
 		{
 			System.out.println("Sorry, the searched value could not be found in the array.");
 		}//end if
@@ -73,27 +70,36 @@ public class Basics {
 		
 		for (int i=0;i<arrayLength(myArray);i++)
 		{
-			System.out.print(myArray[i]+", ");
-		}//end for
-		System.out.println("\b\b}");		
+			System.out.print(myArray[i]);
+			if(i==((arrayLength(myArray)-1)))
+			{
+				System.out.println("}");
+			}else
+			{
+				System.out.print(", ");
+			}//end if
+		}//end for		
 		
 		System.out.println("The length of the array is "+arrayLength(myArray)+".");
 		
 		dropLastElement(myArray,myShortArray);
-		System.out.println("Our array after dropping the last element looks as follows {");
+		System.out.print("Our array after dropping the last element looks as follows {");
 		for (int i=0;i<arrayLength(myShortArray);i++)
 		{
-			System.out.print(myShortArray[i]+", ");
+			System.out.print(myShortArray[i]);
+			if(i==((arrayLength(myShortArray)-1)))
+			{
+				System.out.println("}");
+			}else
+			{
+				System.out.print(", ");
+			}//end if
 		}//end for
-		System.out.println("\b\b}");
 		
 		System.out.println("The sum of the elements of our initial array is "+sumElement(myArray)+".");
 		
 		System.out.println("Please enter the element to be searched in the array.");
-		
-		/*do
-		{
-			*/
+
 		while (!scan.hasNextInt())
 		{
 			scan.next();
@@ -101,7 +107,6 @@ public class Basics {
 			
 		}//end while
 		value = scan.nextInt();
-		//}while(value<0);//end do while
 		
 		elementSearch(myArray,value);
 		
