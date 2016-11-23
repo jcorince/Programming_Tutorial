@@ -10,6 +10,7 @@ public class Addition {
 		System.out.println("Please enter an integer");
 		int num1 = scan.nextInt();
 		int sum;
+		
 		do
 		{
 			System.out.println("Please enter another integer");
