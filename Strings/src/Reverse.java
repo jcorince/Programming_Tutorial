@@ -10,18 +10,19 @@ public class Reverse {
 		System.out.println("Please enter a string");
 		String s = scan.nextLine();
 		int size = s.length();
-		String temp, temp2;
-		int j;
+		String revS="";
+		
+		char[] aTemp = new char[size];
 		
 		for (int i=0;i<size;i++)
 		{
-			j=size-i;
-			temp[i]= s[j];
-			temp2 = temp2 + s[j];
+			aTemp[i]=s.charAt(size-i-1);
 		}//end for
+		revS = String.copyValueOf(aTemp);
+		System.out.println("The reverse of "+s+ " is: "+ revS);
 		
 		//todo: take an String as input and reverse it. Then print it.
-		
+	scan.close();	
 	}
 
 }
