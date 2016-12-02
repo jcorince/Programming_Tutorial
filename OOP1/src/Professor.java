@@ -29,3 +29,4 @@ public class Professor
 		//todo: fill this method
 	}//end addLecture method
 }//end professor class
+

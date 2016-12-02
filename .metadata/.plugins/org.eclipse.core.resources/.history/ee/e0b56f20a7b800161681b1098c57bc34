@@ -2,25 +2,27 @@ import java.util.ArrayList;
 
 
 <<<<<<< HEAD
-public class Student 
+public class Professor 
 {
 =======
-public class Student {
+public class Professor {
 >>>>>>> upstream/master
 	private String name;
-	private int matrNr;
+	private String chair;
 	private ArrayList lectures = new ArrayList();
 	
 <<<<<<< HEAD
-	public Student(String n, int mN)
+	public Professor(String n, String ch)
 	{
 		this.name = n;
-		this.matrNr = mN;
+		this.chair = ch;
+		
 	}//end constructor
 	
 	
 	
-	//todo: write a constructor that already gives the student a name and a matriculation number
+	
+	//todo: write a constructor that already gives the student a name and a chair
 	
 	//todo: write getter and setter methods
 	
@@ -28,11 +30,12 @@ public class Student {
 	{
 		
 		
+		
 		//todo: fill this method
 	}//end addLecture method
-}//end student class
+}//end professor class
 =======
-	//todo: write a constructur that already gives the student a name and a matriculation number
+	//todo: write a constructur that already gives the student a name and a chair
 	
 	//todo: write getter and setter methods
 	

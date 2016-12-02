@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.*;
 
 public class Lecture 
@@ -64,3 +65,15 @@ public class Lecture
 	//todo: write getter and setter methods
 //scan.close();
 }
+=======
+
+public class Lecture {
+	private String name;
+	private double credits;
+	
+	//todo: write a constructor which already takes a name and credits
+	
+	//todo: write getter and setter methods
+
+}
+>>>>>>> upstream/master
