@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Expand {
 	
-	public static void printChar(char s, int n)
+	public static void printStr(String s, int n)
 	{
 		if(n==1)
 		{
@@ -14,21 +14,65 @@ public class Expand {
 			for(int i=1; i<=n; i++)
 			{
 				System.out.print(s);
-				//System.out.print(i);
+				
 			}//end for loop
-		}/*else
-		{
-			System.out.println("Your combination contains a non alphanumeric character.");
-			System.exit(-1);
-		}//end if else
-*/		
-		
+		}
 	}// end print method
 	
 	
-	public static void alphaNumComp()
+	public static void alphaNumComp(String s)
 	{
+		/* ==================================   IMPORTANT REMINDER   =================================
+		 * The line right below breaks the entered string and saves it into an array, separating     * 
+		 * blocks of adjacent text from adjacent digits.                                             *
+		 * \\D picks all non digit characters while \\d picks all digit characters.                  *
+		   ==========================================================================================*/ 	
 		
+		String regex = ("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+
+        String[] str = s.split(regex);//split string into chunks of digits and letters only and save each in the array
+        
+        int num = 0;
+        boolean prevWasNum = false;
+        
+        for(int j = 0; j<str.length;j++)
+        {       	
+        	String a = str[j];        	
+        	
+        	if (Character.isDigit(a.charAt(0))) //if the first character of the substring is a digit
+        	{
+        		num = Integer.parseInt(a);//parse string to get an integer
+        		prevWasNum = true;//set boolean to true
+        	}else if(Character.isLetter(a.charAt(0)))//if the first character of the substring is a letter
+        	{
+        		String b = str[j];
+        		if(prevWasNum)//if boolean true
+        		{
+        			if(b.length()>1)//if multi-character substring
+        			{
+        				String c = Character.toString(b.charAt(0)); //extracting the first character of the substring       			
+        				printStr(c, num); //print extracted character
+        				printStr(b.substring(1), 1);//print the rest of the substring except the first character
+        				
+        			}else if (b.length() == 1)//if substring is single character
+        			{
+        				if(num>1)//if the number before substring is greater than one
+        				{
+        					printStr(b, num);
+        				}else if (num == 1)//if the number before substring is one
+        				{
+        					printStr(b, 1);
+        				}//end if - else
+        				
+        			}//end if - else        			
+        			
+        		}else// if boolean is false (e.g. the first character of the entered string is a letter)
+        		{
+        			printStr(b, 1);
+        		}//end if
+        	}//end if        	
+        	
+        }//end for loop
 	}//end alphaNumComp method
 
 	
@@ -38,147 +82,65 @@ public class Expand {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("Enter an alphanumeric combination: ");
 		
-		String comb = scan.nextLine();
-		int cLength = comb.length();
-/*		
-		//perform check on entered alphanumeric combination
+		
 		int i=0;
-		//int test=0;
-		while(i<cLength)
+		boolean hasWrongChar = false;
+		boolean continueP = false;
+		
+		do
 		{
-			if (!Character.isLetter(comb.charAt(i))) //if a character is not a letter
+			System.out.print("Enter an alphanumeric combination: ");
+		
+			String comb = scan.nextLine();
+			int cLength = comb.length();
+			
+			if(hasWrongChar) //reset boolean and counter
 			{
-				//test=1;
-				if(!Character.isDigit(comb.charAt(i))) //if a character is not a digit
-				{
-					//test = 2;
-					System.out.println("Your combination contains non alphanumeric character(s).");
-					System.exit(-1);
-				}else//if character is a digit
-				{
-					i++;
-					//test = 3;
-				}//end if-else
-				i++;								
-			}else//if character is a letter
-			{
-				i++;
-			}//end if
-			if(i==(cLength-1)&& test ==1)
-			{
-				if (!Character.isLetter(comb.charAt(i))) //if no character is a letter
-				{
-					System.out.println("Your combination contains only numbers or non alphanumeric character(s).");
-					System.exit(-1);
-				}
+				hasWrongChar = false;
+				i=0;
 			}
-			i++;
-		}//end while loop
-		*/
-//========================================================================================================		
-		char c;
-		int d, k;//, temp;
-		int j=0;
-	
-		while(j<cLength)
-		//for(int j=0;j<cLength;j++)
-		{			
-			if(Character.isDigit(comb.charAt(j)))  //first character is a digit
+			
+			while(i<cLength)
 			{
-				if(Character.isDigit(comb.charAt(j+1)))  //next character is a digit
+				
+				char test = comb.charAt(i);
+				if(!Character.isLetterOrDigit(test))
 				{
-					k=j;
-					while(!Character.isLetter(comb.charAt(k))&& k<cLength)
-					{
-						k++;
-					}//end while loop
-					
-					d = 0;
-					//temp =k;
-					c = comb.charAt(k);
-					
-					int e = k-j;
-					while(e>=0)
-					{						
-						d += (comb.charAt(j)- '0')* ((int)Math.pow(10, (e-1)));
-						e--;
-						j++;
-						//e = k-j;
-					}//end while
-					//+(comb.charAt(j+1)- '0');
-					j=k;
-					printChar(c, d);					
-				}else // next character is not a digit
-				{
-					if(Character.isLetter(comb.charAt(j)))//next character is a letter
-					{
-						d = comb.charAt(j)- '0';
-						c = comb.charAt(j+1);
-						if(comb.charAt(j) == 1) // first character is 1
-						{
-							d=1;
-							printChar(c, d);
-							j++;
-						}else //first character greater than 1
-						{
-							printChar(c, d);
-							j++;
-						}//end if - else
-					}/*else //next character is neither a number nor a letter
-					{
-						System.out.println("Your combination contains a non alphanumeric character.");
-						System.exit(-1);
-					}//end if-else
-*/										
+						hasWrongChar = true;
+						System.out.println("The combination should only be made of letters and numbers.");
+						i++;
 				}//end if
-			}else if(j==0) //first character is no digit
-			{
-				if(Character.isLetter(comb.charAt(j)))//first character is a letter
+				
+				if (i == cLength-1)//if no non alphanumeric character found
 				{
-					if(Character.isLetter(comb.charAt(j+1)))//next character is a letter
+					if(!hasWrongChar)
 					{
-						
+						continueP = true;
 					}//end if
-					c = comb.charAt(j);
-					d =1;
-					printChar(c, d);
-					j++;
-				}/*else //first character is neither a number nor a letter
-				{
-					System.out.println("The first digit must be either a positive integer or a letter.");
-					System.exit(-1);
-				}//end if-else	
-*/				
-			}else //if character is not the first
+				}//end if
+				
+				i++;
+			}//end while
+			
+			if(continueP)
 			{
-				if(Character.isLetter(comb.charAt(j)))
-				{
-					if (Character.isLetter(comb.charAt(j+1)))
-					{
-						c = comb.charAt(j);
-						d =1;
-						printChar(c, d);
-						j++;
-					}
-					j++;
-				}
-				j++;
-			}//end if-else				
-		j++;
-		}//end while
+				alphaNumComp(comb);
+			}//end if
+		}while(!continueP);//end do - while		
+
+		scan.close();
+		
+		
 		//todo: take as an input a combination of characters and numbers (e.g. 2a3b5c)
 		//expand the String by printing each letter so many times as the number before 
-		//the letter indicates
-		//e.g. 2a3b5c -> aabbbccccc
+		//the letter indicates e.g. 2a3b5c -> aabbbccccc
 		//Hint: first start with inputs where there is always a number and then a character, 
-		//then think about how
-		//to improve your code such that you can use values greater or equal 10, eg. 10a13b22c
+		//then think about how to improve your code such that you can use values greater or equal 10, 
+		//eg. 10a13b22c 
 		//Further modification: if a character should only be printed one time you don't need 
-		//to write any number infront of that character
-		//e.g. a3b12cd5e -> abbbccccccccccccdeeeee  
-	scan.close();	
-	}
+		//to write any number in front of that character e.g. a3b12cd5e -> abbbccccccccccccdeeeee  
+		
+	}//end main method
 	
-}
+}//end class
