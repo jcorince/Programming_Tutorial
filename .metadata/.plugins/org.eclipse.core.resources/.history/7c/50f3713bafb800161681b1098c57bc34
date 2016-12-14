@@ -1,0 +1,83 @@
+import java.util.*;
+
+//beginner
+
+public class Addition {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Enter an integer");
+		
+		int num1, num2, sum;
+		String intent;
+		int test = 0; 
+		
+		do
+		{
+			while(!scan.hasNextInt())
+			{
+				scan.next();
+				System.out.println("The entered value should be an integer.");
+			}//end while loop
+			num1 = scan.nextInt();
+			if(num1<0)
+			{
+				System.out.println("The integer must be positive.");
+			}//end if
+		}while(num1<0);	//end do while loop	
+		
+		while(test == 0)
+		{			
+			System.out.println("Please enter another integer");
+			
+			do
+			{
+				while(!scan.hasNextInt())
+				{
+					scan.next();
+					System.out.println("The entered value should be an integer.");
+				}//end while loop
+				num2 = scan.nextInt();
+				if(num2<0)
+				{
+					System.out.println("The integer must be positive.");
+				}//end if
+			}while(num1<0);
+			
+			sum = num1+ num2;
+			
+			System.out.println("Enter y to continue or s to display the sum of all previously entered numbers and exit the program.");
+			do
+			{
+				while(!scan.hasNext())
+				{
+					scan.next();
+					System.out.println("You must enter either y or s only.");
+				}//end while loop
+				intent = scan.nextLine();
+				if((intent=="s"))
+				{
+					test = 1;
+					System.out.println("The result is "+ sum);
+				}//end if
+				
+				if(intent == "y")
+				{
+					test = 0;
+				}//end if
+			}while ((intent!="s")||(intent!="y"));//end do while
+			
+			
+		}//end while
+		
+		
+		
+		
+		
+		//todo: Read integer values as input and add them until the user writes a 's'.
+		//Print the result.
+	scan.close();	
+	}//end main method
+	
+}//end addition class

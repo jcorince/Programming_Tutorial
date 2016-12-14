@@ -1,0 +1,95 @@
+import java.util.*;
+
+//beginner
+
+public class Addition {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);		
+		
+		int num1, num2;
+		String intent;
+		int test = 0;
+		int t=0;
+		int sum = 0;
+		
+		System.out.println("Enter an integer");
+		
+		do
+		{
+			while(!scan.hasNextInt())
+			{
+				scan.next();
+				System.out.println("The entered value should be an integer.");
+			}//end while loop
+			num1 = scan.nextInt();
+			if(num1<0)
+			{
+				System.out.println("The integer must be positive.");
+			}//end if
+		}while(num1<0);	//end do while loop	
+		
+		sum += num1;
+		
+		while(test == 0)
+		{			
+			System.out.println("Please enter another integer");
+			
+			do
+			{
+				while(!scan.hasNextInt())
+				{
+					scan.next();
+					System.out.println("The entered value should be an integer.");
+				}//end while loop
+				num2 = scan.nextInt();
+				if(num2<0)
+				{
+					System.out.println("The integer must be positive.");
+				}//end if
+			}while(num1<0); //end do while
+			
+			sum += num2;
+			
+			do
+			{
+				System.out.println("Enter y to continue or s to display the sum of all previously entered numbers and exit the program.");
+			
+				intent = scan.next();
+				//System.out.println("Intent is now "+intent);
+				
+				if (intent.equalsIgnoreCase("s"))
+				{
+					t=1;
+					test = 1;
+					System.out.println("The result is "+ sum);
+					System.exit(-1);
+				}else if (intent.equalsIgnoreCase("y"))
+				{
+					t = 1;
+					test = 0;
+					break;
+				}else
+				{
+					while(t == 0)
+					{
+						
+					}//end while
+					System.out.println("You must enter either y or s only.");
+					intent = scan.next();
+					System.out.println("Intent is now (2) "+intent);					
+				}//end if;
+				
+			}while ((!intent.equalsIgnoreCase("s"))||(!intent.equalsIgnoreCase("y")));//end do while 
+			
+			
+		}//end while
+		
+		
+		
+		//todo: Read integer values as input and add them until the user writes a 's'.
+		//Print the result.
+	scan.close();	
+	}//end main method
+	
+}//end addition class

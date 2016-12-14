@@ -1,12 +1,12 @@
-<<<<<<< HEAD
-import java.util.*;
+
+//import java.util.*;
 
 public class Lecture 
 {
 	private String name;
 	private double credits;
 	
-	Scanner scan = new Scanner(System.in);
+	//Scanner scan = new Scanner(System.in);
 	
 	public Lecture(String n, double c)
 	{
@@ -20,13 +20,50 @@ public class Lecture
 		name = na;
 		credits = cr;
 	}//end setter method
-	
+
+// ================================  Setter and getters ======================================	
 	public String getName()
 	{
 		//String n;
-		System.out.println("Enter a name: ");
-		
-		name=scan.nextLine();
+		boolean isOK = false;
+		boolean wrongChar = false;
+		do
+		{		
+			System.out.println("Enter a name: ");			
+			name = scan.nextLine();
+			
+			int nLength = name.length();
+			int i = 0;
+			
+			if(wrongChar) //reset boolean and counter
+			{
+				wrongChar = false;
+				i=0;
+			}
+			
+			while(i<nLength)
+			{
+				
+				char test = name.charAt(i);
+				if(!Character.isLetter(test))
+				{
+						wrongChar = true;
+						System.out.println("Name should only be made of letters.");
+						i++;
+				}//end if
+				
+				if (i == nLength-1)//if no non alphabetic character found
+				{
+					if(!wr//ongChar)
+					{
+						isOK = true;
+					}//end if
+				}//end if
+				
+				i++;
+			}//end while
+			
+		}while(!isOK);
 		
 		return (name);
 	}//end getName method
@@ -34,19 +71,19 @@ public class Lecture
 	
 	public double getCredits()
 	{
-		//double cr;
-		System.out.println("Enter credits: ");
-		
+		//double cr;	
 		do
 		{
+			System.out.println("Enter credits: ");
+			
 			while(!scan.hasNextDouble())
 			{
 				scan.next();
-				System.out.println("The credit should be a number");
+				System.out.println("Credit should be a number.");
 				
 			}//end while
 			
-			credits=scan.nextDouble();
+			credits = scan.nextDouble();
 			
 			if(credits<0)
 			{
@@ -58,22 +95,11 @@ public class Lecture
 		return (credits);
 	}//end getCredit method
 	
-	
-	
-	//todo: write a constructor which already takes a name and credits
-	
-	//todo: write getter and setter methods
-//scan.close();
-}
-=======
-
-public class Lecture {
-	private String name;
-	private double credits;
+// ==============================================================================================	
 	
 	//todo: write a constructor which already takes a name and credits
 	
 	//todo: write getter and setter methods
+scan.close();
+}//end Lecture class
 
-}
->>>>>>> upstream/master
