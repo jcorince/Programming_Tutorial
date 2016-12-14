@@ -11,6 +11,7 @@ Proper order of exercises:
 * OOP2 
 * Exceptions 
 * Enums 
-* Generics
+* Generics  
+* Databases
 
 For further instructoins please visit the [wiki](https://github.com/NaNaDi/Programming_Tutorial/wiki)

@@ -7,7 +7,7 @@ public class Reverse {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("Please enter a string");
+		System.out.println("Please enter a word or sentence.");
 		String s = scan.nextLine();
 		int size = s.length();
 		String revS="";
